@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>北大美食探索指南 | NTPU Food Guide</title>
+  <meta name="description" content="探索國立臺北大學三峽校區周邊美食！提供學生最愛的便當、麵食、火鍋、早午餐、飲料與甜點即時推薦與搜尋。">
+  
+  <!-- 全站樣式表 (相對路徑支援 GitHub Pages) -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍱</text></svg>">
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="#" class="brand-logo" aria-label="北大美食探索指南 首頁">
+        <div class="logo-badge">🍱</div>
+        <div class="brand-text">
+          <span class="brand-title">北大美食探索指南</span>
+          <span class="brand-sub">NTPU Food Guide</span>
+        </div>
+      </a>
+      <div class="header-tags">
+        <span class="tag-bubble">🎓 三峽校區周邊</span>
+        <span class="tag-bubble">✨ 學生美食指引</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主視覺 Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-banner">
+          <div class="hero-pill">
+            <span>🍙</span>
+            <span>今天吃什麼？讓北大美食地圖幫你決定！</span>
+          </div>
+          <h1 class="hero-title">
+            北大<span class="highlight">美食探索指南</span>
+          </h1>
+          <p class="hero-subtitle">
+            探索台北大學三峽校區周邊的美味日常，陪你度過每一個認真上課與溫暖聚餐的美好時刻！
+          </p>
+          <div class="hero-stats">
+            <span class="stat-chip">🏫 近三峽校門商圈</span>
+            <span class="stat-chip">💰 平價學生友善</span>
+            <span class="stat-chip">⚡ 即時分類與關鍵字搜尋</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 搜尋與分類控制區 -->
+    <section class="control-section">
+      <div class="container">
+        <!-- 搜尋列 -->
+        <div class="search-bar-wrapper">
+          <div class="search-input-group">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="search-input" 
+              placeholder="搜尋店名、料理分類、街區地址（如：火鍋、酸菜魚、牛排、學勤路）..." 
+              autocomplete="off"
+              aria-label="搜尋周邊美食店家"
+            >
+            <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="清除搜尋內容">✕</button>
+          </div>
+        </div>
+
+        <!-- 料理分類按鈕群組 -->
+        <nav class="category-filter-wrapper" aria-label="料理分類篩選">
+          <button type="button" class="category-btn active" data-category="全部">
+            <span class="cat-icon">🍽️</span> 全部
+          </button>
+          <button type="button" class="category-btn" data-category="火鍋">
+            <span class="cat-icon">🍲</span> 火鍋
+          </button>
+          <button type="button" class="category-btn" data-category="中式料理">
+            <span class="cat-icon">🥢</span> 中式料理
+          </button>
+          <button type="button" class="category-btn" data-category="義式料理">
+            <span class="cat-icon">🍝</span> 義式料理
+          </button>
+          <button type="button" class="category-btn" data-category="排餐">
+            <span class="cat-icon">🥩</span> 排餐
+          </button>
+          <button type="button" class="category-btn" data-category="日式料理">
+            <span class="cat-icon">🍱</span> 日式料理
+          </button>
+          <button type="button" class="category-btn" data-category="麵食">
+            <span class="cat-icon">🍜</span> 麵食
+          </button>
+          <button type="button" class="category-btn" data-category="蔬食">
+            <span class="cat-icon">🥗</span> 蔬食
+          </button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- 店家卡片清單區塊 -->
+    <section class="restaurant-list-section">
+      <div class="container">
+        <!-- 結果統計標題列 -->
+        <div class="results-header">
+          <div class="results-count" id="resultsCount">
+            目前共找到 <strong>0</strong> 家推薦美食
+          </div>
+          <div class="results-hint">
+            💡 點擊店家卡片可查看完整特色與 Google Maps 搜尋
+          </div>
+        </div>
+
+        <!-- 卡片網格容器 -->
+        <div class="restaurant-grid" id="restaurantGrid">
+          <!-- 卡片將由 script.js 動態渲染 -->
+        </div>
+
+        <!-- 查無結果之空狀態 -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-icon">🍽️ 🔎</div>
+          <h2 class="empty-title">找不到符合的美食耶～</h2>
+          <p class="empty-text">
+            試試切換其他分類標籤，或是清除搜尋框內的關鍵字看看吧！
+          </p>
+          <button type="button" id="btnResetFilters" class="btn-reset-filters">
+            ✨ 重設所有篩選條件
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 店家詳細資訊彈窗 (Modal) -->
+  <div class="modal-overlay" id="detailModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-window">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="關閉詳細資訊">✕</button>
+      
+      <div class="modal-badges">
+        <span class="category-tag" id="modalCategory">分類標籤</span>
+        <span class="status-badge" id="modalStatusBadge">公開地標 📍</span>
+      </div>
+
+      <h2 class="modal-title" id="modalTitle">店家名稱</h2>
+      <div class="modal-price-range" id="modalPrice">價格區間</div>
+
+      <div class="modal-notice" id="modalNotice">
+        ℹ️ 本店家資訊源自公開地圖與店家登記資料；營業時間、價位與現場供應請以店家官方公告為準。
+      </div>
+
+      <div class="modal-section">
+        <h3 class="modal-section-title">✨ 店家特色與介紹</h3>
+        <p class="modal-desc" id="modalDesc">店家簡介內容...</p>
+      </div>
+
+      <div class="modal-section" id="modalRecommendedSection">
+        <h3 class="modal-section-title">⭐ 推薦必點招牌</h3>
+        <div class="modal-recommended" id="modalRecommended">招牌推薦菜色...</div>
+      </div>
+
+      <div class="modal-section">
+        <h3 class="modal-section-title">🏷️ 特色標籤</h3>
+        <div class="card-tags" id="modalTags">
+          <!-- 標籤動態注入 -->
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h3 class="modal-section-title">📍 店家資訊</h3>
+        <div class="modal-info-list">
+          <div class="modal-info-item">
+            <span class="info-label">參考地址：</span>
+            <span id="modalAddress">新北市三峽區...</span>
+          </div>
+          <div class="modal-info-item" id="modalHoursRow">
+            <span class="info-label">參考營業：</span>
+            <span id="modalHours">11:00 - 20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn-gmaps-link" id="modalGmapsBtn">
+          <span>在 Google Maps 搜尋此店家（地圖搜尋） ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 頁尾宣告區 -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <span>🍱</span> 北大美食探索指南 NTPU Food Guide
+      </div>
+      <div class="footer-disclaimer">
+        國立臺北大學學生專案作品・初期資料僅供功能展示與介面預覽，探索三峽校園好滋味！
+      </div>
+      <p class="footer-note">
+        設計與開發以校園生活便利為初衷・未經官方背書之商標與地名僅供指引參考
+      </p>
+    </div>
+  </footer>
+
+  <!-- 載入資料與互動邏輯 (相對路徑) -->
+  <script src="data/restaurants.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
